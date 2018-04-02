@@ -17,6 +17,23 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/login' do
+    if logged_in?
+      redirect to '/cars'
+    end
+    erb :'users/login'
+  end
+
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect to '/cars'
+      else
+        redirect to '/login'
+      end
+    end 
+
 
 
 
@@ -27,7 +44,7 @@ class UsersController < ApplicationController
       session.destroy
       redirect to '/'
     end
-  end 
+  end
 
 
 end
