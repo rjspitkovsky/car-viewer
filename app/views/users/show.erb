@@ -1,0 +1,13 @@
+<h1>These are <%=@user.username%>'s posted cars:</h1>
+
+<ul>
+  <% @user.cars.each do |car| %>
+  <li> <h2><%=car.manufacturer%></h2> </li>
+  <li> <p><%=car.condition%></p> </li>
+  <li> <p>$<%=car.value%></p> </li>
+  <li> <p><%=car.year%></p> </li>
+  <% end %>
+</ul>
+
+
+<h2>Do you wish to <a href="mailto: <%=@user.email%>">contact car poster</a>?</h2>
