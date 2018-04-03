@@ -28,4 +28,29 @@ class CarsController < ApplicationController
     end
   end
 
+  get '/cars/:id' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @car = Car.find_by_id(params[:id])
+      erb :'cars/show_car'
+    end
+  end
+
+  delete '/cars/:id/delete' do
+    @car = Car.find_by_id(params[:id])
+    if logged_in? && current_user.id == @car.user_id
+      @car.delete
+      redirect to '/cars'
+    else
+      redirect to '/cars'
+    end
+  end 
+
+
+
+
+
+
+
 end

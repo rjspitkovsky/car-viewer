@@ -1,0 +1,20 @@
+<h1>View car details:</h1>
+
+<h3>Manufacturer: <%=@car.manufacturer%></h3>
+<h3>Condition: <%=@car.condition%></h3>
+<h3>Value: $<%=@car.value%></h3>
+<h3>Year: <%=@car.year%></h3>
+
+<h1>Want to contact car poster? <a href="mailto: <%=@car.user.email%>">Email them.</a></h1>
+
+
+<h2>Did you post this car? You can <a href="/cars/<%=@car.id%>/edit">Edit Car Information</a>, or hit the delete button to remove the car from CarViewer.</h2>
+
+<form action="/cars/<%=@car.id%>/delete" method="post">
+  <input type="hidden" name="_method" value="delete" id="hidden">
+
+  <input type="submit" name="" value="Delete">
+
+</form>
+
+<h3>Back to <a href="/cars">browse all cars.</a></h3>
