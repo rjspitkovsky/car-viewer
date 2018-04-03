@@ -2,12 +2,13 @@
 
 <ul>
   <% @user.cars.each do |car| %>
-  <li> <h2><%=car.manufacturer%></h2> </li>
-  <li> <p><%=car.condition%></p> </li>
-  <li> <p>$<%=car.value%></p> </li>
-  <li> <p><%=car.year%></p> </li>
+  <li> <h2>Manufacturer:<%=car.manufacturer%></h2> </li>
+  <li> <p>Condition:<%=car.condition%></p> </li>
+  <li> <p>Value: $<%=car.value%></p> </li>
+  <li> <p>Year: <%=car.year%></p> </li>
   <% end %>
 </ul>
 
 
 <h2>Do you wish to <a href="mailto: <%=@user.email%>">contact car poster</a>?</h2>
+<h3>Back to <a href="/cars">browse all cars.</a></h3>

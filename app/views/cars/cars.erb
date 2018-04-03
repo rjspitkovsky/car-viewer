@@ -1,0 +1,19 @@
+<h1>Welcome <%=@user.username%></h1>
+
+<h2>Browse all cars posted to CarViewer!</h2>
+
+<ul>
+
+
+<% @cars.each do |car| %>
+<li><h3>CarViewer Car ID:<a href="/cars/<%=car.id%>"><%=car.id%></a></h3></li>
+<li> <h4>Manufacturer: <%=car.manufacturer%></h4> </li>
+<li> <h4>Condition: <%=car.condition%></h4> </li>
+<li> <h4>Value: $<%=car.value%></h4> </li>
+<li> <h4>Year: <%=car.year%></h4> </li>
+<li> <h4><a href="/users/<%=@user.slug%>">Car Poster's Page</a></h4></li>
+<% end %>
+
+
+
+</ul>
