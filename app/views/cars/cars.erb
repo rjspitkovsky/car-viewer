@@ -1,6 +1,7 @@
 <h1>Welcome <%=@user.username%></h1>
 
-<h2>Browse all cars posted to CarViewer!</h2>
+<h2>Browse all cars posted to CarViewer or add a <a href="/cars/new">new car</a>!</h2>
+
 
 <ul>
 
@@ -11,7 +12,7 @@
 <li> <h4>Condition: <%=car.condition%></h4> </li>
 <li> <h4>Value: $<%=car.value%></h4> </li>
 <li> <h4>Year: <%=car.year%></h4> </li>
-<li> <h4><a href="/users/<%=@user.slug%>">Car Poster's Page</a></h4></li>
+<li> <h4><a href="/users/<%=car.user.slug%>">Car Poster's Page</a></h4></li>
 <% end %>
 
 
