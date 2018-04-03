@@ -1,0 +1,12 @@
+<h1>Edit Car Details</h1>
+<h2>DO NOT LEAVE ANY FIELD BLANK</h2>
+
+<form action="/cars/<%=@car.id%>/edit" method="post">
+  <input type="hidden" name="_method" value="patch" id="hidden">
+  <h3>Manufacturer: <input type="text" name="manufacturer" value="<%=@car.manufacturer%>"> </h3>
+  <h3>Condition: <input type="text" name="condition" value="<%=@car.condition%>"> </h3>
+  <h3>Value: $<input type="text" name="value" value="<%=@car.value%>"> </h3>
+  <h3>Year: <input type="text" name="year" value="<%=@car.year%>"> </h3>
+  <input type="submit" name="" value="Edit Car">
+
+</form>

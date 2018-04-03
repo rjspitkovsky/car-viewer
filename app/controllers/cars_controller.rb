@@ -37,6 +37,30 @@ class CarsController < ApplicationController
     end
   end
 
+  get '/cars/:id/edit' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @car = Car.find_by_id(params[:id])
+        if @car.user_id == current_user.id
+          erb :'cars/edit_car'
+        else
+          redirect to '/cars'
+        end
+    end
+  end
+
+
+  patch '/cars/:id/edit' do
+    @car = Car.find_by_id(params[:id])
+    if !params.values.include?("")
+      @car.update(manufacturer: params[:manufacturer], condition: params[:condition], value: params[:value], year: params[:year])
+      redirect to "/cars/#{@car.id}"
+    else
+      redirect to "/cars/#{params[:id]}/edit"
+    end
+  end  
+
   delete '/cars/:id/delete' do
     @car = Car.find_by_id(params[:id])
     if logged_in? && current_user.id == @car.user_id
@@ -45,7 +69,7 @@ class CarsController < ApplicationController
     else
       redirect to '/cars'
     end
-  end 
+  end
 
 
 
