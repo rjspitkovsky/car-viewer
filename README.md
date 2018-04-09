@@ -4,19 +4,7 @@ This CRUD web app will allow you to browse cars listed for sale. You will be abl
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'carviewer'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install carviewer
+Simply fork and clone this repo. Bundle install the gemfile and then run shotgun to start your local server and play around with the CarViewer app to your hearts desire!
 
 ## Contributing
 
