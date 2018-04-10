@@ -53,13 +53,15 @@ class CarsController < ApplicationController
 
   patch '/cars/:id/edit' do
     @car = Car.find_by_id(params[:id])
-    if !params.values.include?("")
-      @car.update(manufacturer: params[:manufacturer], condition: params[:condition], value: params[:value], year: params[:year])
-      redirect to "/cars/#{@car.id}"
-    else
-      redirect to "/cars/#{params[:id]}/edit"
+    if @car.user_id == current_user.id
+      if !params.values.include?("")
+        @car.update(manufacturer: params[:manufacturer], condition: params[:condition], value: params[:value], year: params[:year])
+        redirect to "/cars/#{@car.id}"
+      else
+        redirect to "/cars/#{params[:id]}/edit"
+      end
     end
-  end  
+  end
 
   delete '/cars/:id/delete' do
     @car = Car.find_by_id(params[:id])
