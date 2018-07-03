@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if logged_in?
+      # A logged in user should not be able to sign up again
       redirect to '/cars'
     end
     erb :'users/signup'
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
+      # A logged in user should not be able to see the login page again
       redirect to '/cars'
     end
     erb :'users/login'
@@ -43,6 +45,7 @@ class UsersController < ApplicationController
   end
 end
 
+# Refactor to add error message instead of creating new route possible
   get '/failure' do
     erb :failure
   end

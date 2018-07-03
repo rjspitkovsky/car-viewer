@@ -1,5 +1,7 @@
 class CarsController < ApplicationController
 
+  # Might refactor to check for logged_in status before_action
+
   get '/cars' do
     if !logged_in?
       redirect '/login'
@@ -20,7 +22,9 @@ class CarsController < ApplicationController
 
   post '/cars' do
     @user = current_user
+    # No blank values allowed when posting details about a new car
     if !params.values.include?("")
+      # can be refactored into a cars_params helper method
       @car = Car.create(manufacturer: params[:manufacturer], condition: params[:condition], value: params[:value], year: params[:year], user_id: @user.id)
       redirect to '/cars'
     else
@@ -42,6 +46,7 @@ class CarsController < ApplicationController
       redirect to '/login'
     else
       @car = Car.find_by_id(params[:id])
+      # Test to make sure that the current user trying to edit details is the user that posted the car
         if @car.user_id == current_user.id
           erb :'cars/edit_car'
         else
@@ -57,6 +62,7 @@ class CarsController < ApplicationController
       @car.update(manufacturer: params[:manufacturer], condition: params[:condition], value: params[:value], year: params[:year])
       redirect to "/cars/#{@car.id}"
     else
+      # Using params[:id] in case Car.find_by_id(params[:id]) returns nil 
       redirect to "/cars/#{params[:id]}/edit"
     end
   end

@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :cars
   has_secure_password
-  validates :username, :email, :password, presence: true 
+  validates :username, :email, :password, presence: true
+
+  # Find a user through their username instead of the user.id value 
 
   def slug
     self.username.downcase.gsub(" ","-")
